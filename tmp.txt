@@ -1,0 +1,7 @@
+https://stackoverflow.com/questions/38921414/mongodb-what-are-the-default-user-and-password
+https://github.com/nhp878/dts
+http://nhp.duckdns.org/
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-14-04
+https://cloud.google.com/community/tutorials/nodejs-mongodb-on-appengine
+https://cloud.google.com/community/tutorials/mongodb-atlas-appengineflex-nodejs-app
+
