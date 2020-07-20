@@ -4,12 +4,6 @@ class APIFeatures {
     this.queryString = queryString;
   }
 
-  // removeAccents(str) {
-  //   return str.normalize('NFD')
-  //             .replace(/[\u0300-\u036f]/g, '')
-  //             .replace(/đ/g, 'd').replace(/Đ/g, 'D');
-  // }
-
   filter() {
     const queryObj = { ...this.queryString };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
@@ -19,16 +13,6 @@ class APIFeatures {
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
 
-    //convert query by name to query by slug
-    queryStr = queryStr.replace("\"name\":", "\"slug\":");
-    
-    
-    //Convert name search to VN name search without accents
-    queryStr = queryStr.normalize('NFD')
-                       .replace(/[\u0300-\u036f]/g, '')
-                       .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
-    
-    console.log(queryStr);
     this.query = this.query.find(JSON.parse(queryStr));
 
     return this;

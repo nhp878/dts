@@ -9,11 +9,10 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a name'],
       unique: true,
       trim: true,
-      maxlength: [240, 'A tour name must have less or equal then 240 characters'],
+      maxlength: [40, 'A tour name must have less or equal then 40 characters'],
       minlength: [10, 'A tour name must have more or equal then 10 characters']
       // validate: [validator.isAlpha, 'Tour name must only contain characters']
     },
-    nonAccentName: String,
     slug: String,
     duration: {
       type: Number,
@@ -93,10 +92,6 @@ tourSchema.virtual('durationWeeks').get(function() {
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
 tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
-  this.nonAccentName = this.name
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
   next();
 });
 
